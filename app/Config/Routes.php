@@ -5,7 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'AdminHome::index');
+$routes->get('/', 'AdminHome::index',['filter' => 'authGuard']);
 // $routes->get('/about', 'about::index');
 // $routes->get('/contact', 'contact::index');
 // $routes->get('/services', 'services::index');
@@ -20,5 +20,8 @@ $routes->post('products/update/(:num)', 'ProductController::update/$1');
 //singin,singup
 $routes->get('register', 'SignupController::index');
 $routes->match(['get','post'] ,'register/store','SignupController::store');
+$routes->get('signin', 'SigninController::index');
+$routes->post('login', 'SigninController::login');
+$routes->get('signout', 'SigninController::logout');
 
 
